@@ -85,14 +85,14 @@ export class FetchData extends Component {
     }
 
     async orderByName(e) {
-        const response = await fetch('api/names/orderby?attribute=name');
+        const response = await fetch('api/names/orderbyname');
         const data = await response.json();
         console.log(data);
         this.setState({ names: data, loading: false });
     }
 
     async orderByAmount() {
-        const response = await fetch('api/names/orderby?attribute=amount');
+        const response = await fetch('api/names/orderbyamount');
         const data = await response.json();
         this.setState({ names: data, loading: false });
     }

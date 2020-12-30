@@ -33,19 +33,16 @@ namespace NameApplication.Controllers
             return _repository.GetByName(name);
         }
 
-        [HttpGet("orderby")]
-        public IEnumerable<NameEntry> OrderBy(string attribute)
+        [HttpGet("orderbyname")]
+        public IEnumerable<NameEntry> OrderByName(string attribute)
         {
-            switch (attribute.ToLower())
-            {
-                case "name":
-                    return _repository.GetAll().OrderBy(x => x.Name);
-                case "amount":
-                    return _repository.GetAll().OrderByDescending(x => x.Amount);
-                default:
-                    _logger.LogError($"Could not find object property with name: {attribute}");
-                    return new List<NameEntry>();
-            }
+            return _repository.GetAll().OrderBy(x => x.Name);
+        }
+
+        [HttpGet("orderbyamount")]
+        public IEnumerable<NameEntry> OrderByAmount(string attribute)
+        {
+            return _repository.GetAll().OrderByDescending(x => x.Amount);
         }
 
         [HttpGet("totalamount")]
